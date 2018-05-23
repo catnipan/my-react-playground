@@ -18,8 +18,11 @@ export default (stateName, stateUpdaterName, initialState) => WrappedComponent =
     }
     render(){
       return React.createElement(WrappedComponent, {
-        [stateName]: this.state[stateName],
-        [stateUpdaterName]: this[stateUpdaterName]
+        ...this.props,
+        ...{
+          [stateName]: this.state[stateName],
+          [stateUpdaterName]: this[stateUpdaterName]
+        }
       })
     }
   }
