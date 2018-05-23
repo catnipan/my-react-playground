@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const withState = (stateName, stateUpdaterName, initialState) => Component => {
+const withState = (stateName, stateUpdaterName, initialState) => Component => {
   return class wrapped extends React.Component{
     constructor(){
       super();
@@ -23,3 +23,5 @@ export const withState = (stateName, stateUpdaterName, initialState) => Componen
     }
   }
 }
+
+export default withState;
