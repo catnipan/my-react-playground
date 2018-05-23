@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import { withState, withHandlers, withProps, mapProps, compose } from './my-recompose';
-
-
+import { withState, withHandlers, withProps, mapProps, compose, setDisplayName } from './my-recompose';
 
 export default compose(
+  setDisplayName('MyNameHHH'),
   mapProps({
     start: ({ startNumber }) => startNumber + 1
   }),
