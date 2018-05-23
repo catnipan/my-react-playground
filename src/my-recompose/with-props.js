@@ -17,6 +17,6 @@ export default (handlerCreators) => WrappedComponent => {
       })
     }
   }
-  WithPropsComponent.displayName = `withHandlers(${getDisplayName(WrappedComponent)})`;
+  WithPropsComponent.displayName = `withProps(${getDisplayName(WrappedComponent)})`;
   return WithPropsComponent;
 }
