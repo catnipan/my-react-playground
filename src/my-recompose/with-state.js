@@ -8,12 +8,12 @@ export default (stateName, stateUpdaterName, initialState) => WrappedComponent =
       this.state = {
         [stateName]: initialState
       }
-    }
-    [stateUpdaterName] = (updater, callback) => {
-      if(typeof updater === "function"){
-        this.setState({ [stateName]: updater(this.state[stateName]) }, callback);
-      } else {
-        this.setState({ [stateName]: updater }, callback)
+      this[stateUpdaterName] = (updater, callback) => {
+        if(typeof updater === "function"){
+          this.setState({ [stateName]: updater(this.state[stateName]) }, callback);
+        } else {
+          this.setState({ [stateName]: updater }, callback)
+        }
       }
     }
     render(){
