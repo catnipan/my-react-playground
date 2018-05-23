@@ -2,18 +2,24 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import { withState } from './my-recompose';
+import { withState, withHandlers } from './my-recompose';
 
-const enhance = withState('counter', 'setCounter', 0)
-const Counter = enhance(function Counter({ counter, setCounter }){
+const enhance1 = withState('counter', 'setCounter', 0);
+const enhance2 = withHandlers({
+  increment: ({setCounter}) => () => setCounter(n => n + 1),
+  decrement: ({setCounter}) => () => setCounter(n => n - 1),
+  reset: ({setCounter}) => () => setCounter(0)
+})
+
+function Counter({ counter, increment, decrement, reset }){
   return (
     <div>
       Count: {counter}
-      <button onClick={() => setCounter(n => n + 1)}>Increment</button>
-      <button onClick={() => setCounter(n => n - 1)}>Decrement</button>
-      <button onClick={() => setCounter(0)}>Reset</button>
+      <button onClick={increment}>Increment</button>
+      <button onClick={decrement}>Decrement</button>
+      <button onClick={reset}>Reset</button>
     </div>
   )
-})
+}
 
-export default Counter;
+export default enhance1(enhance2(Counter));

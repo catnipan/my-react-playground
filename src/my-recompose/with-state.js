@@ -23,6 +23,6 @@ export default (stateName, stateUpdaterName, initialState) => WrappedComponent =
       })
     }
   }
-  WithStateComponent.displayName = `WithState(${getDisplayName(WrappedComponent)})`;
+  WithStateComponent.displayName = `withState(${getDisplayName(WrappedComponent)})`;
   return WithStateComponent;
 }
