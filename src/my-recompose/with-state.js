@@ -1,7 +1,7 @@
 import React from 'react';
 import { getDisplayName } from './util';
 
-const withState = (stateName, stateUpdaterName, initialState) => WrappedComponent => {
+export default (stateName, stateUpdaterName, initialState) => WrappedComponent => {
   class WithStateComponent extends React.Component{
     constructor(){
       super();
@@ -17,14 +17,12 @@ const withState = (stateName, stateUpdaterName, initialState) => WrappedComponen
       }
     }
     render(){
-      return <WrappedComponent {...{
+      return React.createElement(WrappedComponent, {
         [stateName]: this.state[stateName],
         [stateUpdaterName]: this[stateUpdaterName]
-      }}/>
+      })
     }
   }
   WithStateComponent.displayName = `WithState(${getDisplayName(WrappedComponent)})`;
   return WithStateComponent;
 }
-
-export default withState;
