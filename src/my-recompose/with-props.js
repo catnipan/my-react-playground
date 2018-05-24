@@ -2,20 +2,15 @@ import React from 'react';
 import { getDisplayName } from './util';
 
 export default (handlerCreators) => WrappedComponent => {
-  class WithPropsComponent extends React.Component{
-    constructor(props){
-      super(props);
+  function WithPropsComponent(props){
+    const generateProps = {};
+    for(var handlerName in handlerCreators){
+      generateProps[handlerName] = handlerCreators[handlerName](props);
     }
-    render(){
-      const generateProps = {};
-      for(var handlerName in handlerCreators){
-        generateProps[handlerName] = handlerCreators[handlerName](this.props);
-      }
-      return React.createElement(WrappedComponent, {
-        ...this.props,
-        ...generateProps
-      })
-    }
+    return React.createElement(WrappedComponent, {
+      ...props,
+      ...generateProps
+    })
   }
   WithPropsComponent.displayName = `withProps(${getDisplayName(WrappedComponent)})`;
   return WithPropsComponent;
