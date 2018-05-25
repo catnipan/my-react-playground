@@ -2,9 +2,14 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import { withState, withHandlers, withProps, mapProps, compose, setDisplayName } from './my-recompose';
+import { withState, withHandlers, withProps, mapProps, compose, setPropTypes, setDisplayName } from './my-recompose';
+import PropTypes from 'prop-types';
 
 export default compose(
+  setDisplayName('HHH'),
+  setPropTypes({
+    startNumber: PropTypes.number
+  }),
   withState('counter', 'setCounter', 0),
   withState('max', '', 5),
   withHandlers({

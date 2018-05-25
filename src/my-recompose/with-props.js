@@ -1,5 +1,5 @@
 import React from 'react';
-import { getDisplayName } from './util';
+import { wrapDisplayName } from './display-name';
 
 export default (handlerCreators) => WrappedComponent => {
   function WithPropsComponent(props){
@@ -12,6 +12,6 @@ export default (handlerCreators) => WrappedComponent => {
       ...generateProps
     })
   }
-  WithPropsComponent.displayName = `withProps(${getDisplayName(WrappedComponent)})`;
+  WithPropsComponent.displayName = wrapDisplayName(WrappedComponent, 'withProps');
   return WithPropsComponent;
 }

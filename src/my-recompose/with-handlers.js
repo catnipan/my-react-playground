@@ -1,6 +1,6 @@
 import React from 'react';
 import shallowEqual from 'shallowequal';
-import { getDisplayName } from './util';
+import { wrapDisplayName } from './display-name';
 
 export default (handlerCreators) => WrappedComponent => {
   var beforeProps = {};
@@ -17,7 +17,7 @@ export default (handlerCreators) => WrappedComponent => {
       ...generatedHandlers
     })
   }
-  WithHandlersComponent.displayName = `withHandlers(${getDisplayName(WrappedComponent)})`;
+  WithHandlersComponent.displayName = wrapDisplayName(WrappedComponent, 'withHandlers');
   return WithHandlersComponent;
 }
 

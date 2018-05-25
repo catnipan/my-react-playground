@@ -1,5 +1,5 @@
 import React from 'react';
-import { getDisplayName } from './util';
+import { wrapDisplayName } from './display-name';
 
 export default (stateName, stateUpdaterName, initialState) => WrappedComponent => {
   class WithStateComponent extends React.Component{
@@ -26,6 +26,6 @@ export default (stateName, stateUpdaterName, initialState) => WrappedComponent =
       })
     }
   }
-  WithStateComponent.displayName = `withState(${getDisplayName(WrappedComponent)})`;
+  WithStateComponent.displayName = wrapDisplayName(WrappedComponent, 'withState');
   return WithStateComponent;
 }

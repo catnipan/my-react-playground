@@ -1,5 +1,5 @@
 import React from 'react';
-import { getDisplayName } from './util';
+import { wrapDisplayName } from './display-name';
 
 export default (handlerCreators) => WrappedComponent => {
   class MapPropsComponent extends React.Component{
@@ -14,6 +14,6 @@ export default (handlerCreators) => WrappedComponent => {
       return React.createElement(WrappedComponent, mappedProps)
     }
   }
-  MapPropsComponent.displayName = `mapProps(${getDisplayName(WrappedComponent)})`;
+  MapPropsComponent.displayName = wrapDisplayName(WrappedComponent, 'mapProps');
   return MapPropsComponent;
 }
