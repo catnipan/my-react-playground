@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import { withState, withHandlers, withProps, mapProps, compose, setPropTypes, setDisplayName } from './my-recompose';
+import { withState, withHandlers, withProps, mapProps, compose, setPropTypes, setDisplayName } from './recompose';
 import PropTypes from 'prop-types';
 
 export default compose(
